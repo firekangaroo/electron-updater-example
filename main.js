@@ -5,10 +5,6 @@ const {app, BrowserWindow, Menu, protocol, ipcMain} = require('electron');
 const log = require('electron-log');
 const {autoUpdater} = require("electron-updater");
 
-process.on('uncaughtException', (error)=>{
-  console.log(error);
-});
-
 //-------------------------------------------------------------------
 // Logging
 //
@@ -64,7 +60,7 @@ function sendStatusToWindow(text) {
 }
 function createDefaultWindow() {
   win = new BrowserWindow();
-  // win.webContents.openDevTools();
+  win.webContents.openDevTools();
   win.on('closed', () => {
     win = null;
   });
